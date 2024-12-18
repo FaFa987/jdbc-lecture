@@ -12,9 +12,15 @@ public class Main {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("localhost:3306/lecture_db", "root", "1234");
+            connection = DriverManager.getConnection("localhost:3306/test_db", "root", "1234");
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM address");
+            resultSet = statement.executeQuery("SELECT * FROM task");
+
+            if (resultSet.next()) {
+                System.out.println(
+                        resultSet.getString("title") + " " + resultSet.getString("_description")
+                );
+            }
 
         }catch (SQLException e) {
             e.printStackTrace();
