@@ -13,11 +13,10 @@ public class Main {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "1234");
-
             statement = connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM task");
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 System.out.println(
                         resultSet.getString("title") + " " + resultSet.getString("_description")
                 );
@@ -25,6 +24,15 @@ public class Main {
 
         }catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                if (resultSet != null && resultSet.isClosed()) {
+                    resultSet.close();
+                }
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
 
