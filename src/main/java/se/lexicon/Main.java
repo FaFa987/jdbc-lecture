@@ -12,13 +12,13 @@ public class Main {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/school_db", "root", "1234");
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM task");
+            resultSet = statement.executeQuery("SELECT * FROM courses");
 
             while (resultSet.next()) {
                 System.out.println(
-                        resultSet.getString("title") + " " + resultSet.getString("_description")
+                        resultSet.getString("course_id") + " " + resultSet.getString("course_name")
                 );
             }
 
