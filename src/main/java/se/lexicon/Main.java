@@ -2,8 +2,7 @@ package se.lexicon;
 
 import java.sql.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
 
@@ -12,13 +11,13 @@ public class Main {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/school_db", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db", "root", "1234");
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM courses");
+            resultSet = statement.executeQuery("SELECT * FROM task");
 
             while (resultSet.next()) {
                 System.out.println(
-                        resultSet.getString("course_id") + " " + resultSet.getString("course_name")
+                        resultSet.getString("title") + " " + resultSet.getString("_description")
                 );
             }
 
