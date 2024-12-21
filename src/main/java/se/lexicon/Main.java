@@ -12,7 +12,8 @@ public class Main {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("localhost:3306/test_db", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/world", "root", "1234");
+
             statement = connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM task");
 
